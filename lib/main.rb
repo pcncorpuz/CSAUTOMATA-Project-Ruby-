@@ -26,9 +26,9 @@ puts "Start State is q0"
 current = a[0]
 for i in 0..state-1
   for j in 0..symbol-1
-   print "\t(q#{i}, #{j}) = "
+    print "\t(q#{i}, #{j}) = "
     x = gets.chomp
-    a[i].setnext(j,x[i])
+    a[i].setnext(j,a[x[1].to_i])
   end
   if i != 0
     print "is q#{i} a final state?[Y/N]: "
@@ -45,7 +45,7 @@ begin
   sstr = gets.chomp.split("")
   len = sstr.length
   for q in 0..len-1
-    b = sstr[0]
+    b = sstr[q].to_i
     print "(q#{current.getid}, #{b}) = q"
     current = current.getnext(b)
     puts "#{current.getid}"
@@ -55,4 +55,6 @@ begin
   else
     puts "#{sstr.join} is rejected!"
   end
+  print "Enter another string?[Y/N]"
+  again = gets.chomp
 end while again == 'y' || again == 'Y'
