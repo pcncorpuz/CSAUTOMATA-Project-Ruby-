@@ -42,12 +42,12 @@ end
 again = 'y'
 begin
   print "Enter a string: "
-  sstr = gets.chomp.chars
+  sstr = gets.chomp.split("")
   len = sstr.length
   for q in 0..len-1
     b = sstr[0]
     print "(q#{current.getid}, #{b}) = q"
-    current = current.next[b]
+    current = current.getnext(b)
     puts "#{current.getid}"
   end
   if(current.isfinal == true)

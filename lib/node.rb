@@ -11,7 +11,7 @@ class Node
   end
   
   def isfinal
-    check
+    @check
   end
   
   def setfinal()
@@ -30,4 +30,7 @@ class Node
     @ID
   end
   
+  def getnext(x)
+    @next[x]
+  end
 end
