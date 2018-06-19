@@ -23,22 +23,36 @@ while i < state
 end
 
 puts "Start State is q0"
-i = 0
-j = 0
-while i < state
-  while j < symbol
+current = a[0]
+for i in 0..state-1
+  for j in 0..symbol-1
    print "\t(q#{i}, #{j}) = "
     x = gets.chomp
     a[i].setnext(j,x[i])
-    j = j +1
   end
   if i != 0
-    print "is q#{c} a final state?[Y/N]: "
+    print "is q#{i} a final state?[Y/N]: "
     choice = gets.chomp
     if choice == 'y' || choice == 'Y'
-      a[i].setFinal
+      a[i].setfinal
     end
   end
-  i = i + 1
 end
 
+again = 'y'
+begin
+  print "Enter a string: "
+  sstr = gets.chomp.chars
+  len = sstr.length
+  for q in 0..len-1
+    b = sstr[0]
+    print "(q#{current.getid}, #{b}) = q"
+    current = current.next[b]
+    puts "#{current.getid}"
+  end
+  if(current.isfinal == true)
+    puts "#{sstr.join} is accepted!"
+  else
+    puts "#{sstr.join} is rejected!"
+  end
+end while again == 'y' || again == 'Y'
