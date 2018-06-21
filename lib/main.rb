@@ -4,7 +4,6 @@ print "Enter number of symbols: "
 symbol = gets.chomp.to_i
 for l in 0..symbol-1
   puts l
-  l += 1
 end
 
 print "Enter number of states: "
@@ -13,7 +12,6 @@ a = []
 for c in 0..state-1
   a[c] = Node.new
   a[c].setid(c)
-  c +=1
 end
 
 puts "Start State is q0"
